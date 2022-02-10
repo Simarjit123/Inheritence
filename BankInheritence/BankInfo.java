@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 //Parent class verify login by comparing cardno & pin no
 //deposit balance in parent class
@@ -9,8 +10,9 @@ public class BankInfo {
 
 	String cardNo;
 	int pinNum;
-	int balance = 500;
+	int balance;
 	double newBalance;
+	Scanner sc = new Scanner(System.in);
 
 	BankInfo(String cardNumber, int pinNumber) {
 		this.cardNumber = cardNumber;
@@ -38,7 +40,7 @@ public class BankInfo {
 
 	boolean verifyCard(String cardNumber, int pinNumber) {
 
-		if (cardNumber.equals("41111") && (pinNumber == 1234)) {
+		if (cardNumber.equals("12345") && (pinNumber == 123)) {
 			return true;
 
 		}
@@ -47,18 +49,4 @@ public class BankInfo {
 
 	}
 
-//balance is common is parent and sub class
-	public double getBalance() {
-
-		return newBalance;
-	}
-
-	double deposit(int amount) {
-		if (amount > 0) {
-			newBalance = balance + amount;
-			System.out.println("successful");
-		} else
-			System.out.println("not success");
-		return newBalance;
-	}
 }

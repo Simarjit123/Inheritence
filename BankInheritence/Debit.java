@@ -1,17 +1,31 @@
+
 //debit subclass to withdraw money and print balance after withdrawal
+import java.util.Scanner;
+
 public class Debit extends BankInfo {
-	int minBalance = 50;
-	double remainingBalance;
+
+	Scanner sc = new Scanner(System.in);
 
 	Debit(String cardNumber, int pinNumber) {
 		super(cardNumber, pinNumber);
-
 	}
 
-	void moneyWithdraw(int amountWithdrawn) {
-		System.out.println("Enter money to withdraw");
+	void deposit1() {
 
-		int newBalance = -amountWithdrawn;
+		System.out.println("enter previous balance");
+		newBalance = sc.nextInt();
+
+		int deposit;
+		System.out.println("enter amount to deposited");
+		deposit = sc.nextInt();
+		newBalance = newBalance + deposit;
+	}
+
+	public double withdraw() {
+		System.out.println("Enter money to withdraw");
+		double moneyWithdraw = sc.nextDouble();
+		double finalBalance = (newBalance - moneyWithdraw);
+		return finalBalance;
 
 	}
 }
