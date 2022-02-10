@@ -24,7 +24,7 @@ public class Debit extends BankInfo {
 	public double withdraw() {
 		System.out.println("Enter money to withdraw");
 		double moneyWithdraw = sc.nextDouble();
-		double finalBalance = (newBalance - moneyWithdraw);
+		double finalBalance = newBalance - moneyWithdraw;
 		return finalBalance;
 
 	}

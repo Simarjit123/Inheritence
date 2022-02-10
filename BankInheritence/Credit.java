@@ -2,7 +2,7 @@ import java.util.Scanner;
 //check credit limit
 
 public class Credit extends BankInfo {
-	int spendLimit = 1000;// set credit limit
+	int spendLimit = 1000;//spend limit
 	int monthlyFee;
 	Scanner sc = new Scanner(System.in);
 
