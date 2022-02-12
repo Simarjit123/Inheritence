@@ -7,17 +7,15 @@ public class BankInfo {
 	double amount;
 	int pinNumber;
 	String cardNumber;
-
+	String accountNumber = "12345";
+	int password = 123;
 	String cardNo;
 	int pinNum;
 	int balance;
 	double newBalance;
 	Scanner sc = new Scanner(System.in);
 
-	BankInfo(String cardNumber, int pinNumber) {
-		this.cardNumber = cardNumber;
-		this.pinNumber = pinNumber;
-
+	BankInfo() {
 	}
 
 	public String getCardNo() {
@@ -40,7 +38,7 @@ public class BankInfo {
 
 	boolean verifyCard(String cardNumber, int pinNumber) {
 
-		if (cardNumber.equals("12345") && (pinNumber == 123)) {
+		if (cardNumber.equals(accountNumber) && (pinNumber == password)) {
 			return true;
 
 		}

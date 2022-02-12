@@ -1,31 +1,27 @@
-import java.util.Scanner;
-//check credit limit
 
 public class Credit extends BankInfo {
-	int spendLimit = 1000;//spend limit
-	int monthlyFee;
-	Scanner sc = new Scanner(System.in);
+	int spendLimit = 1000;// spend limit
 
-	Credit(String cardNumber, int pinNumber, int monthlyFee, int amount) {
+	public boolean verifyCard;
 
-		super(cardNumber, monthlyFee);
+	Credit() {
 
 	}
 
-	public double purchase() {
-		int amountSpent = 0;
-		System.out.println("Enter amount you want to spend:");// spend limit is set to 1000;
-		int amountSpent1 = sc.nextInt();
-		newBalance = balance + amountSpent1;
+	public int spendLimit() {
+		return spendLimit;
+	}
 
-		if (newBalance > spendLimit) {
-			System.out.println("your amount is exceeding limit");
+	public double purchase(double purchase) {
 
+		double creditBalance = 0;
+		if (purchase > spendLimit) {
+			System.out.println(" Credit limit is exceeded,please try again.");
+			creditBalance = newBalance - purchase;
 		} else {
-			System.out.println("you are within the limit");
+			System.out.println("Successfully purchased");
 
 		}
-		return 0;
+		return creditBalance;
 	}
-
 }

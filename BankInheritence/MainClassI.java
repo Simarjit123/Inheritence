@@ -4,39 +4,57 @@ import java.util.Scanner;
 public class MainClassI {
 
 	public static void main(String[] args) {
-		BankInfo bank = new BankInfo(null, 0);
-		Credit credit = new Credit(null, 0, 0, 0);
-		Debit debit = new Debit(null, 0);
+
+		int pinNumber = 0;
+		String cardNumber = null;
+
 		Scanner sc = new Scanner(System.in);
-		// verify pinno & cardNo
-		// card no is set to 12345 & pin is set to 123
-		System.out.print(" Enter card number: ");
-		bank.setCardNo(sc.next());
+		System.out.println("please select card type:debit / credit");
 
-		System.out.println("Enter pin number:");
-		bank.setPinNum(sc.nextInt());
-		// verify pin & card
-		if (bank.verifyCard(bank.getCardNo(), bank.getPinNum())) {
+		String type = sc.next();
 
-			System.out.println("successfull login");
+		switch (type) {
+		case "debit":
+			// debit child class is used to call parent class login verify method
+			Debit debit = new Debit(cardNumber, pinNumber);
+			// card no is set to 12345 & pin is set to 123
+			System.out.print(" Enter card number: ");
+			debit.setCardNo(sc.next());
+
+			System.out.println("Enter pin number:");
+			debit.setPinNum(sc.nextInt());
+
+			if (debit.verifyCard(debit.getCardNo(), debit.getPinNum())) {
+
+				System.out.println("successfull login & enter money to deposit");
+				double amountToDeposit = sc.nextDouble();
+				debit.depositMoney(amountToDeposit);
+			}
+
+			else {
+				System.out.println("Not valid pin ");
+			}
+			break;
+			
+		case "credit":
+
+			// Credit child class is used to call Parent class login verify method
+			// credit lim it is 1000
+			Credit credit = new Credit();
+			System.out.print(" Enter card number: ");
+			credit.setCardNo(sc.next());
+
+			System.out.println("Enter pin number:");
+			credit.setPinNum(sc.nextInt());
+
+			if (credit.verifyCard(credit.getCardNo(), credit.getPinNum())) {
+				System.out.println("Welcome to credit.Enter amount you want to spend from credit card");
+				double purchase = sc.nextDouble();
+				credit.purchase(purchase);
+			} else {
+				System.out.println("not valid pin");
+			}
+			break;
 		}
-
-		else {
-			System.out.println("Not valid pin ");
-		}
-
-		// deposit amount with new balance
-
-		debit.deposit1();
-		System.out.println("New balance is:" + debit.newBalance);
-
-//enter amount to be spent to verify whether credit limit is exceeded or not
-
-		credit.purchase();
-
-		// Money withdraw & print balance
-
-		System.out.println("balance after withdrawal is:" + debit.withdraw());
-
 	}
 }
